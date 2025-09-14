@@ -1,1 +1,7 @@
-<h1> asd </h1>
+<div id="flashcards">
+  <% @flashcards.each do |card| %>
+    <div>
+      <%= card.question %>
+    </div>
+  <% end %>
+</div>

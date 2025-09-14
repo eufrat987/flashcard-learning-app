@@ -1,0 +1,14 @@
+
+
+  Hello, <%= Current.user.email_address %>
+
+  <%= form_with model: @flashcard, url: create_flashcard_path  do |form| %>
+    <%= form.label :question %>
+    <%= form.text_field :question %> <br>
+    <%= form.label :answer %>
+    <%= form.text_field :answer %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+  <% end %>

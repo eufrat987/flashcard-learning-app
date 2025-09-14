@@ -16,5 +16,6 @@ Rails.application.routes.draw do
 
   get "users/new" => 'users#new', as: :new_user
   post "users/create" => 'users#create', as: :create_user
-
+  get "flashcards/new" => 'flashcards#new', as: :new_flashcard
+  post "flashcard/create" => 'flashcards#create', as: :create_flashcard
 end
