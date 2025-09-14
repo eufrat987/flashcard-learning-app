@@ -17,9 +17,13 @@ class UsersController < ApplicationController
 
     end
 
-    def reset_session
+    def reset_learning_session
         @user = User.find(params[:id])
         @user.session = 1
+        @user.flashcard.each do |card|
+          card.bucket = 1
+          card.save
+        end 
         if @user.save
             redirect_to root_path
         else

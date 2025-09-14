@@ -31,15 +31,7 @@
     <%= render "nav" %>
 
     <main class="container flex-grow-1">
-
-      <% if notice %>
-        <div class="alert alert-primary">
-        <%= notice %>
-      </div>
-      <% end %>
-
       <%= yield %>
-
     </main>
 
     <%= render "footer" %>

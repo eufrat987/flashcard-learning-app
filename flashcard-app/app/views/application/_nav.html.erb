@@ -16,10 +16,13 @@
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "New Flashcard", new_flashcard_path, class: "nav-link" %>
+              <%= link_to "New flashcard", new_flashcard_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "All Flashcards", all_flashcards_path, class: "nav-link" %>
+              <%= link_to "All flashcards", all_flashcards_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= button_to "Reset learning", reset_learning_session_path(Current.user), method: :put, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= button_to "Log out", session_path, class: "nav-link", method: :delete %>
