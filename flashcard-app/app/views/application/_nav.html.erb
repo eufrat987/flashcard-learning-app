@@ -24,9 +24,6 @@
             <li class="nav-item">
               <%= button_to "Reset learning", reset_learning_session_path(Current.user), method: :put, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <%= button_to "Log out", session_path, class: "nav-link", method: :delete %>
-            </li>
             
             <% else %>
 
@@ -39,6 +36,15 @@
 
             <% end %>
           </ul>
+          
+          <%  if authenticated? %>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <%= button_to "Log out", session_path, method: :delete, class: "nav-link", form: { class: "d-inline" } %>
+            </li>
+          </ul>
+          <% end %>
+
         </div>
       </div>
     </nav>
