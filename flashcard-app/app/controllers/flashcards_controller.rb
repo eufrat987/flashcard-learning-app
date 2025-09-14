@@ -1,7 +1,10 @@
 class FlashcardsController < ApplicationController
     
     def index
-       @flashcards = Current.user.flashcard
+        puts "aloha"
+        puts params
+        puts 'end'
+       @flashcard = Current.user.flashcard.first
     end
     
     def new

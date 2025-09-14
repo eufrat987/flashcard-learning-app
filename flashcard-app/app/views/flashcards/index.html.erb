@@ -1,7 +1,39 @@
-<div id="flashcards">
-  <% @flashcards.each do |card| %>
-    <div>
-      <%= card.question %>
-    </div>
-  <% end %>
+
+<div class="card mx-auto bg-primary-subtle mt-4 p-3 rounded shadow" style="max-width: 60%; min-width: 300px; width: 100%;">
+  <h4 class="card-title">
+  Question:
+  </h4>
+  <div class="card-body">
+    <%= @flashcard.question %> <br>
+  </div>
+  <br>
+
+  <div class="d-flex">
+    <%= button_to "Show answer", root_path, method: :get, class: "btn btn-light m-2", params: { show: true } %> 
+  </div>
+  
 </div>
+
+<% if params[:show] == "true" %>
+
+<div class="card mx-auto bg-info-subtle mt-4 p-3 rounded shadow" style="max-width: 60%; min-width: 300px; width: 100%;">
+
+   <h4 class="card-title">
+  Answer:
+  </h4>
+  <div class="card-body">
+    <%= @flashcard.answer %> <br>
+  </div>
+  <br>
+
+  <div class="d-flex">
+     <%= button_to "I succeded", root_path, class: "btn btn-primary m-2" %>
+     <%= button_to "I failed", root_path, class: "btn btn-danger m-2" %>
+  </div>
+
+<div>
+
+  <% end %>
+
+
+
