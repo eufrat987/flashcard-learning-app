@@ -20,17 +20,15 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <nav>
-    <%= link_to "Home", root_path if authenticated? %>
-    <%= link_to "New Flashcard", new_flashcard_path if authenticated? %>
-    <%= link_to "Sign Up", new_user_path unless authenticated? %>
-    <%= link_to "Login", new_session_path unless authenticated? %>
-    <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-    </nav>
 
+    <%= render "nav" %>
     <div class="notice"><%= notice %></div>
 
     <%= yield %>
