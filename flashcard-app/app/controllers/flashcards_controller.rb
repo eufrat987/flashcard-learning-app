@@ -1,51 +1,18 @@
 class FlashcardsController < ApplicationController
-    
+    before_action :set_flashcard, only: %i[ delete update edit show success fail ]
+
     def index
        @flashcard = Current.user.flashcard.first
        redirect_to show_flashcard_path(@flashcard)
     end
 
     def all
-        @flashcards = Flashcard.all
+        @flashcards = Current.user.flashcard
     end
-
-    def delete
-        @flashcard = Flashcard.find(params[:id])
-        if Flashcard.delete(@flashcard)
-            redirect_to all_flashcards_path
-        else
-            render :new, status: :unprocessable_entity, notice: "Failed."
-        end
-    end
-
-    def update
-        @flashcard = Flashcard.find(params[:id])
-        if @flashcard.update(flashcard_params) 
-            redirect_to all_flashcards_path
-        else
-            render :new, status: :unprocessable_entity, notice: "Failed."
-        end
-    end
-    
-    def edit
-        @flashcard = Flashcard.find(params[:id])
-    end
-
 
     def show
-        @flashcard = Flashcard.find(params[:id])
     end
 
-    def success
-        @flashcard = Flashcard.find(params[:id])
-        redirect_to root_path
-    end
-
-    def fail
-        @flashcard = Flashcard.find(params[:id])
-        redirect_to root_path
-    end
-    
     def new
         @flashcard = Flashcard.new
     end
@@ -59,6 +26,37 @@ class FlashcardsController < ApplicationController
             render :new, status: :unprocessable_entity, notice: "Failed."
         end
 
+    end
+    
+    def edit
+    end
+
+    def update
+        if @flashcard.update(flashcard_params) 
+            redirect_to all_flashcards_path
+        else
+            render :new, status: :unprocessable_entity, notice: "Failed."
+        end
+    end
+
+    def delete
+        if Flashcard.delete(@flashcard)
+            redirect_to all_flashcards_path
+        else
+            render :new, status: :unprocessable_entity, notice: "Failed."
+        end
+    end
+
+    def success
+        redirect_to root_path
+    end
+
+    def fail
+        redirect_to root_path
+    end
+
+    private def set_flashcard
+        @flashcard = Flashcard.find(params[:id])
     end
 
     private def flashcard_params 

@@ -1,16 +1,2 @@
 
-<div class="mt-5">
-
-
-  <%= form_with model: @flashcard, url: create_flashcard_path  do |form| %>
-    <%= form.label :question, class: "form-label" %>
-    <%= form.text_field :question, class: "form-control" %> <br>
-    <%= form.label :answer, class: "form-label" %>
-    <%= form.text_field :answer, class: "form-control" %> <br>
-
-  <div>
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
-  <% end %>
-
-  </div>
+<%= render "form", flashcard: @flashcard, url: create_flashcard_path %>
