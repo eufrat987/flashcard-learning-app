@@ -2,14 +2,14 @@ class FlashcardsController < ApplicationController
     before_action :set_flashcard, only: %i[ delete update edit show success fail ]
 
     def index
-       @flashcard = Flashcard.where("bucket <= ?", Current.user.session)
+       @flashcard = Current.user.flashcard.where("bucket <= ?", Current.user.session)
             .order("RANDOM()").limit(1).first
        has_flashcards = Current.user.flashcard.first.present?
 
        if has_flashcards && !@flashcard.present? 
         Current.user.session += 1
         Current.user.save
-        @flashcard = Flashcard.where("bucket <= ?", Current.user.session)
+        @flashcard = Current.user.flashcard.where("bucket <= ?", Current.user.session)
             .order("RANDOM()").limit(1).first
        end
 
