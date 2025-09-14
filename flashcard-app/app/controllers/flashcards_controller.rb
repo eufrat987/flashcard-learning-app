@@ -1,10 +1,22 @@
 class FlashcardsController < ApplicationController
     
     def index
-        puts "aloha"
-        puts params
-        puts 'end'
        @flashcard = Current.user.flashcard.first
+       redirect_to show_flashcard_path(@flashcard)
+    end
+
+    def show
+        @flashcard = Flashcard.find(params[:id])
+    end
+
+    def success
+        @flashcard = Flashcard.find(params[:id])
+        redirect_to root_path
+    end
+
+    def fail
+        @flashcard = Flashcard.find(params[:id])
+        redirect_to root_path
     end
     
     def new

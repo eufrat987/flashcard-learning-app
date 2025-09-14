@@ -14,8 +14,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "flashcards#index"
 
-  get "users/new" => 'users#new', as: :new_user
-  post "users/create" => 'users#create', as: :create_user
-  get "flashcards/new" => 'flashcards#new', as: :new_flashcard
-  post "flashcard/create" => 'flashcards#create', as: :create_flashcard
+  get "/users/new" => 'users#new', as: :new_user
+  post "/users/create" => 'users#create', as: :create_user
+  get "/flashcards/new" => 'flashcards#new', as: :new_flashcard
+  get "/flashcards/:id" => 'flashcards#show', as: :show_flashcard
+  post "/flashcards/create" => 'flashcards#create', as: :create_flashcard
+
+  put "/flashcards/:id/success" => 'flashcards#success', as: :success_flashcard
+  put "/flashcards/:id/fail" => 'flashcards#fail', as: :fail_flashcard
+
 end

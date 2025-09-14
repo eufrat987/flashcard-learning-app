@@ -9,7 +9,7 @@
   <br>
 
   <div class="d-flex">
-    <%= button_to "Show answer", root_path, method: :get, class: "btn btn-light m-2", params: { show: true } %> 
+    <%= button_to "Show answer", show_flashcard_path(@flashcard), method: :get, class: "btn btn-light m-2", params: { show: true } %> 
   </div>
   
 </div>
@@ -27,8 +27,8 @@
   <br>
 
   <div class="d-flex">
-     <%= button_to "I succeded", root_path, method: :put, class: "btn btn-primary m-2" %>
-     <%= button_to "I failed", root_path, method: :put, class: "btn btn-danger m-2" %>
+     <%= button_to "I succeded", success_flashcard_path(@flashcard), method: :put, class: "btn btn-primary m-2" %>
+     <%= button_to "I failed", fail_flashcard_path(@flashcard), method: :put, class: "btn btn-danger m-2" %>
   </div>
 
 <div>
