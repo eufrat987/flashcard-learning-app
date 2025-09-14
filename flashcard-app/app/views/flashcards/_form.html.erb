@@ -1,7 +1,7 @@
 
 <div class="mt-5">
 
-  <%= form_with model: flashcard, url: url  do |form| %>
+  <%= form_with model: flashcard, url: url, method: method do |form| %>
     <%= form.label :question, class: "form-label" %>
     <%= form.text_field :question, class: "form-control" %> <br>
     <%= form.label :answer, class: "form-label" %>
