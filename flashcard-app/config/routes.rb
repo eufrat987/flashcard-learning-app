@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   root "flashcards#index"
 
   get "users/new" => 'users#new', as: :new_user
+  post "users/create" => 'users#create', as: :create_user
 
 end
