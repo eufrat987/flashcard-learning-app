@@ -3,22 +3,10 @@
 
 <% @flashcards.each do |card| %>
   
-    <div class="card mx-auto bg-primary-subtle m-4 p-3 rounded shadow" style="max-width: 60%; min-width: 300px; width: 30%;">
-        <h4 class="card-title">
-            Question
-        </h4>
-        <div class="card-body">
-            <%= card.question %>
-            
-        </div>
-
-          <div class="d-flex">
+    <%= render "card", card: card, width: "30%" do %>
             <%= button_to "Edit", edit_flashcard_path(card), method: :get, class: "btn btn-info" %>
             <%= button_to "Delete", delete_flashcard_path(card), method: :delete, params: { "flashcard": card },  class: "btn btn-danger" %>
-          </div>
-        
-    </div>
-
+    <% end %>
 
 <% end %>
 

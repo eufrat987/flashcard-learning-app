@@ -1,7 +1,6 @@
 
 <div class="mt-5">
 
-
   <%= form_with model: flashcard, url: url  do |form| %>
     <%= form.label :question, class: "form-label" %>
     <%= form.text_field :question, class: "form-control" %> <br>
@@ -11,6 +10,7 @@
   <div>
     <%= form.submit class: "btn btn-primary" %>
   </div>
+  
   <% end %>
 
 </div>
