@@ -3,7 +3,12 @@ class FlashcardsController < ApplicationController
 
     def index
        @flashcard = Current.user.flashcard.first
-       redirect_to show_flashcard_path(@flashcard)
+
+       if @flashcard.present?
+        redirect_to show_flashcard_path(@flashcard)
+       else
+        redirect_to new_flashcard_path
+       end
     end
 
     def all
@@ -19,6 +24,7 @@ class FlashcardsController < ApplicationController
 
     def create
         @flashcard = Flashcard.create(flashcard_params)
+        @flashcard.bucket = 0
         @flashcard.user = Current.user
         if @flashcard.save
             redirect_to root_path, notice: "Success."
@@ -48,11 +54,22 @@ class FlashcardsController < ApplicationController
     end
 
     def success
-        redirect_to root_path
+        puts @flashcard
+        @flashcard.bucket = @flashcard.bucket + 1
+        if @flashcard.save
+            redirect_to root_path
+        else
+            render :new, status: :unprocessable_entity, notice: "Failed."
+        end
     end
 
     def fail
-        redirect_to root_path
+        @flashcard.bucket = 1
+        if @flashcard.save
+            redirect_to root_path
+        else
+            render :new, status: :unprocessable_entity, notice: "Failed."
+        end
     end
 
     private def set_flashcard

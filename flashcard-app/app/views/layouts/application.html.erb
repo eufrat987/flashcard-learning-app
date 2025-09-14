@@ -26,22 +26,23 @@
 
   </head>
 
-  <body class="">
+  <body class="d-flex flex-column min-vh-100">
 
     <%= render "nav" %>
 
-    <main class="container">
+    <main class="container flex-grow-1">
 
+      <% if notice %>
+        <div class="alert alert-primary">
+        <%= notice %>
+      </div>
+      <% end %>
 
-    <% if notice %>
-      <div class="alert alert-primary">
-      <%= notice %>
-    </div>
-    <% end %>
-
-    <%= yield %>
+      <%= yield %>
 
     </main>
+
+    <%= render "footer" %>
 
   </body>
 </html>

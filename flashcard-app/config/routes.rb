@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   get "/flashcards/:id/edit" => 'flashcards#edit', as: :edit_flashcard
   put "/flashcards/:id" => 'flashcards#update', as: :update_flashcard
 
+  put "/users/:id/session" => 'users#reset_session', as: :delete_user_session
+
 end
