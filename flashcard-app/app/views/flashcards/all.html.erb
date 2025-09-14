@@ -3,7 +3,7 @@
 
 <% @flashcards.each do |card| %>
   
-    <%= render "card", card: card, width: "30%" do %>
+    <%= render "card", card: card, title: "Question:", color: "bg-primary-subtle", width: "30%" do %>
             <%= button_to "Edit", edit_flashcard_path(card), method: :get, class: "btn btn-info" %>
             <%= button_to "Delete", delete_flashcard_path(card), method: :delete, params: { "flashcard": card },  class: "btn btn-danger" %>
     <% end %>

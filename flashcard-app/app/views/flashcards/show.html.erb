@@ -1,28 +1,16 @@
 
 
-  <%= render "card", card: @flashcard, width: "100%" do %>
+  <%= render "card", card: @flashcard, title: "Question:", color: "bg-primary-subtle", width: "100%" do %>
     <%= button_to "Show answer", show_flashcard_path(@flashcard), method: :get, class: "btn btn-light m-2", params: { show: true } %> 
   <% end %>
 
 
 <% if params[:show] == "true" %>
 
-  <div class="card mx-auto bg-info-subtle mt-4 p-3 rounded shadow" style="max-width: 60%; min-width: 300px; width: 100%;">
-
-    <h4 class="card-title">
-    Answer:
-    </h4>
-    <div class="card-body">
-      <%= @flashcard.answer %> <br>
-    </div>
-    <br>
-
-    <div class="d-flex">
-      <%= button_to "I succeded", success_flashcard_path(@flashcard), method: :put, class: "btn btn-primary m-2" %>
-      <%= button_to "I failed", fail_flashcard_path(@flashcard), method: :put, class: "btn btn-danger m-2" %>
-    </div>
-
-  <div>
+  <%= render "card", card: @flashcard, title: "Answer:", color: "bg-warning-subtle", width: "100%" do %>
+    <%= button_to "I succeded", success_flashcard_path(@flashcard), method: :put, class: "btn btn-primary m-2" %>
+    <%= button_to "I failed", fail_flashcard_path(@flashcard), method: :put, class: "btn btn-danger m-2" %>
+  <% end %>
 
 <% end %>
 
