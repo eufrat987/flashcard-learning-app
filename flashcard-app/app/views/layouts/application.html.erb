@@ -23,6 +23,11 @@
   </head>
 
   <body>
+    <nav>
+    <%= link_to "Home", root_path if authenticated? %>
+    <%= link_to "Sign Up", new_user_path unless authenticated? %>
+    <%= link_to "Login", new_session_path unless authenticated? %>
+    </nav>
     <%= yield %>
   </body>
 </html>

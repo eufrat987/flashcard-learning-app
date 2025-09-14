@@ -13,4 +13,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "flashcards#index"
+
+  get "users/new" => 'users#new', as: :new_user
+
 end
