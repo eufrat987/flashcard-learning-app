@@ -1,8 +1,7 @@
-
 <div class="mt-5">
 
 
-  <%= form_with model: @flashcard, url: create_flashcard_path  do |form| %>
+  <%= form_with model: @flashcard, url: update_flashcard_path, method: :put  do |form| %>
     <%= form.label :question, class: "form-label" %>
     <%= form.text_field :question, class: "form-control" %> <br>
     <%= form.label :answer, class: "form-label" %>

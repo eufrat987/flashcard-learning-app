@@ -9,7 +9,9 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-
+.card-body {
+    font-style: italic;
+}
 
 
 

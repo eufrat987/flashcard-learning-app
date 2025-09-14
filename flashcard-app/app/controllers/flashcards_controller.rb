@@ -5,6 +5,33 @@ class FlashcardsController < ApplicationController
        redirect_to show_flashcard_path(@flashcard)
     end
 
+    def all
+        @flashcards = Flashcard.all
+    end
+
+    def delete
+        @flashcard = Flashcard.find(params[:id])
+        if Flashcard.delete(@flashcard)
+            redirect_to all_flashcards_path
+        else
+            render :new, status: :unprocessable_entity, notice: "Failed."
+        end
+    end
+
+    def update
+        @flashcard = Flashcard.find(params[:id])
+        if @flashcard.update(flashcard_params) 
+            redirect_to all_flashcards_path
+        else
+            render :new, status: :unprocessable_entity, notice: "Failed."
+        end
+    end
+    
+    def edit
+        @flashcard = Flashcard.find(params[:id])
+    end
+
+
     def show
         @flashcard = Flashcard.find(params[:id])
     end
@@ -24,14 +51,11 @@ class FlashcardsController < ApplicationController
     end
 
     def create
-        puts 1
         @flashcard = Flashcard.create(flashcard_params)
         @flashcard.user = Current.user
         if @flashcard.save
-            puts 2
             redirect_to root_path, notice: "Success."
         else
-            puts 3
             render :new, status: :unprocessable_entity, notice: "Failed."
         end
 

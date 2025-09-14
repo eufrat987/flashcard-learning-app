@@ -11,6 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <%  if authenticated? %>
+
             <li class="nav-item">
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
@@ -18,16 +19,21 @@
               <%= link_to "New Flashcard", new_flashcard_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
+              <%= link_to "All Flashcards", all_flashcards_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= button_to "Log out", session_path, class: "nav-link", method: :delete %>
             </li>
             
             <% else %>
+
             <li class="nav-item">
               <%= link_to "Sign Up", new_user_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Login", new_session_path, class: "nav-link" %>
             </li>
+
             <% end %>
           </ul>
         </div>
