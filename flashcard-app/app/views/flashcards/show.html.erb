@@ -1,13 +1,13 @@
 
 
-  <%= render "card", card: @flashcard, title: "Question:", color: "bg-primary-subtle", width: "100%" do %>
+  <%= render "card", body: @flashcard.question, title: "Question:", color: "bg-primary-subtle", width: "100%" do %>
     <%= button_to "Show answer", show_flashcard_path(@flashcard), method: :get, class: "btn btn-light m-2", params: { show: true } %> 
   <% end %>
 
 
 <% if params[:show] == "true" %>
 
-  <%= render "card", card: @flashcard, title: "Answer:", color: "bg-warning-subtle", width: "100%" do %>
+  <%= render "card", body: @flashcard.answer, title: "Answer:", color: "bg-warning-subtle", width: "100%" do %>
     <%= button_to "I succeded", success_flashcard_path(@flashcard), method: :put, class: "btn btn-primary m-2" %>
     <%= button_to "I failed", fail_flashcard_path(@flashcard), method: :put, class: "btn btn-danger m-2" %>
   <% end %>
